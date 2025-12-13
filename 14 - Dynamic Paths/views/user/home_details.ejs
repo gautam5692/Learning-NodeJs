@@ -1,0 +1,34 @@
+<%- include("../partials/head") %>
+</head>
+
+<body>
+  <%- include("../partials/user_header") %>
+  <main class="container mt-5 flex flex-col justify-center items-center p-5">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+      Home Details
+    </h2>
+    <div class="w-full">
+      <% // if (home.id == homeId) { %>
+      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+        Home Details
+      </h2>
+      <div>
+        <img src="<%= //home.house_img_url %>" alt="Home Image">
+        <div>
+          <b>House Name:</b> <%= //home.house_name %>
+          <br><br>
+          <b>House Location:</b> <%= //home.location %>
+          <br><br>
+          <b>Price per Night:</b> Rs. <%= //home.price %>
+          <br><br>
+          <b>Houe Rating:</b> <%= //home.rating %>
+        </div>
+      </div>
+      <% //} else { %>
+      <h2>Invalid Home Id</h2>
+      <% //} %>
+    </div>
+  </main>
+</body>
+
+</html>

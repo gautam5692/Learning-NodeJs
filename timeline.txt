@@ -1,0 +1,68 @@
+🚀 Getting Started
+#(0:00:00) Introduction 🎥
+#(0:02:02) Intro to NodeJS ⚙️
+#(0:02:40) Pre-requisites 📚
+#(0:06:02) What is NodeJS ❓
+#(0:17:15) Features 🌟
+
+💻 JavaScript in Action
+#(0:27:58) JS on Client 🖥️ / Server 🖧
+#(0:34:04) Client vs Server Code 🔁
+#(0:37:45) Other Uses 🧰
+#(0:43:24) Server Architecture 🧱
+
+🛠️ Setup & Tools
+#(0:47:00) Installing NodeJS 📥
+#(0:52:02) MAC / Windows / Linux Setup 🍎🪟🐧
+#(1:21:14) VSCode Setup 🧩
+#(1:24:15) Running First File 🚀
+#(1:30:04) REPL 📘
+
+🌐 Networking & Servers
+#(1:33:00) First Server 🖲️
+#(1:33:53) DNS 🌐 / Web 🌍 / Protocols 📡
+#(1:51:37) Core Modules / Require 🔗
+#(2:12:26) Request-Response ↔️
+#(2:14:08) Event Loop 🔄
+
+🔁 Streams & Buffers
+#(3:15:17) Parsing Request 🧵
+#(3:16:38) Streams / Chunks / Buffers 🌊📦
+#(4:02:22) Using Modules ⚒️
+
+🔄 Async & Runtime
+#(4:32:17) Event Loop Deep-dive 🌀
+#(4:41:02) V8 vs libuv 🧠
+#(4:55:25) Async vs Blocking 🚧
+
+📦 NPM & Dev Tools
+#(5:20:56) NPM & Scripts 🛫
+#(5:35:45) Installing Packages ⬇️
+#(5:38:14) Nodemon 🔁
+
+🐞 Debugging & Errors
+#(5:45:52) Error Types 📉
+#(6:03:54) Debugger 🛡️
+#(6:18:39) Practice 🧠
+
+🚦 Express.js
+#(6:00:00) Starting Express 🚦
+#(6:39:42) Middleware / Routes 🪄🗃️
+#(7:04:22) Practice 🎯
+
+🛤️ Routing & Static Files
+#(7:19:04) Routers / 404 / HTML 📁
+#(8:30:53) Tailwind CSS 💨
+#(8:51:52) Using Tailwind 🎨
+
+🪞 Dynamic UI with EJS
+#(9:00:55) Dynamic UI 🌈
+#(9:20:00) EJS Setup & Templates 🧩
+
+⚙️ MVC Architecture
+#(10:08:30) MVC Concepts 🎛️
+#(10:50:55) File Operations 📝
+
+🧭 Final Steps
+#(11:47:24) Dynamic Paths 🔀
+#(11:58:40) Bye Bye 👋🏻

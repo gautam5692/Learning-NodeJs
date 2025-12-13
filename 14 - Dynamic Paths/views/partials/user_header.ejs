@@ -1,0 +1,18 @@
+<header class="w-full bg-rose-600 text-white p-2 sticky top-0 z-10">
+      <nav>
+        <ul class="flex flex-row gap-2">
+          <li>
+            <a href="/" class="hover:bg-rose-500 rounded block px-4 py-2 <%= activeTab === "Home" ? 'bg-rose-500' : 'bg-transparent' %>">Home</a>
+          </li>
+          <li>
+            <a href="/favourites" class="hover:bg-rose-500 rounded block px-4 py-2 <%= activeTab === "favourites" ? 'bg-rose-500' : 'bg-transparent' %>">Favourites</a>
+          </li>
+          <li>
+            <a href="/reserve" class="hover:bg-rose-500 rounded block px-4 py-2 <%= activeTab === "reserve" ? 'bg-rose-500' : 'bg-transparent' %>">Reserve</a>
+          </li>
+          <li>
+            <a href="/bookings" class="hover:bg-rose-500 rounded block px-4 py-2 <%= activeTab === "bookings" ? 'bg-rose-500' : 'bg-transparent' %>">Bookings</a>
+          </li>
+        </ul>
+      </nav>
+    </header>

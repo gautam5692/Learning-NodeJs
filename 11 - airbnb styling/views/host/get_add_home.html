@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Home</title>
+    <link rel="stylesheet" href="/output.css" />
+  </head>
+  <body>
+    <header class="bg-gray-200 p-10 mb-5">
+      <h1 class="text-3xl font-bold text-center">Register your home here:</h1>
+    </header>
+    <form
+      action="/host/add-home"
+      method="post"
+      class="bg-gray-100 text-center p-8"
+    >
+      <input
+        type="text"
+        name="house_name"
+        placeholder="Enter your house name"
+        autocomplete="off"
+        class="px-2 outline-1"
+      />
+      <br /><br />
+      <button type="submit" class="bg-linear-to-br from-amber-600 to-pink-600 mx-10 py-1 px-5 text-white rounded-2xl cursor-pointer">Submit</button>
+    </form>
+  </body>
+</html>
