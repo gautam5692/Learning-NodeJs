@@ -8,6 +8,6 @@ hostRouter.get("/add-home", getAddHome);
 
 hostRouter.post("/add-home", postAddHome);
 
-hostRouter.get("/home-detail", homeDetails)
+hostRouter.get("/home-details/:homeId", homeDetails)
 
 exports.hostRouter = hostRouter;

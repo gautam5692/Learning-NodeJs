@@ -2,6 +2,8 @@ const fs = require("fs");
 const rootDir = require("../utility/pathUtil");
 const path = require("path");
 
+const dataFilePath = path.join(rootDir, "data", "dataFile.json");
+
 module.exports = class Home {
   constructor(house_name, house_img_url, price, location, rating) {
     this.house_name = house_name;
@@ -15,7 +17,6 @@ module.exports = class Home {
     this.id = new Date().getTime()
     Home.fetchData((registeredHomes) => {
       registeredHomes.push(this);
-      const dataFilePath = path.join(rootDir, "data", "dataFile.json");
       fs.writeFile(dataFilePath, JSON.stringify(registeredHomes), (err) => {
         if (err) {
           console.log(err);
@@ -25,7 +26,6 @@ module.exports = class Home {
   }
   
   static fetchData(callback) {
-    const dataFilePath = path.join(rootDir, "data", "dataFile.json");
     fs.readFile(dataFilePath, (err, data) => {
       if (!err && data.toString() !== "") {
         callback(JSON.parse(data))

@@ -1,1 +1,26 @@
-[{"house_name":"First House","house_img_url":"no image","price":"500","location":"Kotmi","rating":"4.5"}]
+[
+  {
+    "house_name": "First House",
+    "house_img_url": "/images/house1.png",
+    "price": "500",
+    "location": "Kotmi",
+    "rating": "4.5",
+    "id": 1765707784638
+  },
+  {
+    "house_name": "Second House",
+    "house_img_url": "/images/house2.png",
+    "price": "220",
+    "location": "Kotmi",
+    "rating": "4.2",
+    "id": 1765706279013
+  },
+  {
+    "house_name": "Third House",
+    "house_img_url": "/images/house3.png",
+    "price": "2121",
+    "location": "Raigarh",
+    "rating": "4.2",
+    "id": 1765707865811
+  }
+]

@@ -10,13 +10,6 @@ exports.homePage = (req, res, next) => {
   });
 };
 
-exports.homeDetails = (req, res, next) => {
-  res.render("user/home_details", {
-    pageTitle: "Home Details",
-    activeTab: "Home Details"
-  })
-}
-
 exports.favourites = (req, res, next) => {
   res.render("user/favourites", {
     pageTitle: "Favourites",
@@ -37,3 +30,15 @@ exports.bookings = (req, res, next) => {
     activeTab: "bookings"
   })
 }
+
+exports.homeDetails = (req, res, next) => {
+  const homeId = req.params.homeId;
+  Home.fetchData((registeredHomes) => {
+    const home = registeredHomes.find((home) => homeId == home.id);
+    res.render("user/home_details", {
+      home,
+      pageTitle: "Home Details",
+      activeTab: "Home Details",
+    });
+  });
+};

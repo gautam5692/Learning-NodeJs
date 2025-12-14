@@ -4,9 +4,9 @@ const userRouter = express.Router();
 
 
 userRouter.get("/", homePage);
-userRouter.get("/home-detail", homeDetails)
 userRouter.get("/favourites", favourites)
 userRouter.get("/reserve", reserve)
 userRouter.get("/bookings", bookings)
+userRouter.get("/home-details/:homeId", homeDetails)
 
 module.exports = userRouter;

@@ -3,30 +3,46 @@
 
 <body>
   <%- include("../partials/host_header") %>
-  <main class="container mt-5 flex flex-col justify-center items-center p-5">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
-      Home Details
-    </h2>
-    <div class="w-full">
-      <% // if (home.id == homeId) { %>
-      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
-        Home Details
+  <main class="w-full flex justify-center items-center mt-10 p-4 sm:p-6 lg:p-8">
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
+      <% if (home) { %>
+      <h2 class="text-4xl font-extrabold text-gray-900 mb-8 pt-6 px-6 text-center border-b pb-4">
+        🏡 Home Details
       </h2>
-      <div>
-        <img src="<%= //home.house_img_url %>" alt="Home Image">
-        <div>
-          <b>House Name:</b> <%= //home.house_name %>
-          <br><br>
-          <b>House Location:</b> <%= //home.location %>
-          <br><br>
-          <b>Price per Night:</b> Rs. <%= //home.price %>
-          <br><br>
-          <b>Houe Rating:</b> <%= //home.rating %>
+      <div class="p-6 md:p-8">
+        <div class="mb-8">
+        <img src="<%= home.house_img_url %>">
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+          <div class="p-4 border border-gray-100 rounded-md bg-gray-50">
+            <p class="font-semibold text-gray-500">House Name:</p>
+            <p class="text-xl font-bold text-gray-800"><%= home.house_name %></p>
+          </div>
+
+          <div class="p-4 border border-gray-100 rounded-md bg-gray-50">
+            <p class="font-semibold text-gray-500">House Location:</p>
+            <p class="text-xl font-bold text-gray-800"><%= home.location %></p>
+          </div>
+
+          <div class="p-4 border border-gray-100 rounded-md bg-gray-50">
+            <p class="font-semibold text-gray-500">Price per Night:</p>
+            <p class="text-xl font-bold text-green-600">Rs. <%= home.price %></p>
+          </div>
+
+          <div class="p-4 border border-gray-100 rounded-md bg-gray-50">
+            <p class="font-semibold text-gray-500">House Rating:</p>
+            <p class="text-xl font-bold text-yellow-500">
+                ⭐ <%= home.rating %>
+            </p>
+          </div>
         </div>
       </div>
-      <% //} else { %>
-      <h2>Invalid Home Id</h2>
-      <% //} %>
+      <% } else { %>
+      <div class="p-10 text-center">
+        <h2 class="text-4xl font-bold text-red-600">🚨 Invalid Home ID</h2>
+        <p class="mt-4 text-gray-600">The requested home details could not be found. Please check the ID.</p>
+      </div>
+      <% } %>
     </div>
   </main>
 </body>

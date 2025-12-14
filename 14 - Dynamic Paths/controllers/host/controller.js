@@ -28,8 +28,13 @@ exports.postAddHome = (req, res, next) => {
 };
 
 exports.homeDetails = (req, res, next) => {
-  res.render("host/home_details", {
-    pageTitle: "Home Details",
-    activeTab: "Home Details"
-  })
-}
+  const homeId = req.params.homeId;
+  Home.fetchData((registeredHomes) => {
+    const home = registeredHomes.find((home) => homeId == home.id);
+    res.render("host/home_details", {
+      home,
+      pageTitle: "Home Details",
+      activeTab: "Home Details",
+    });
+  });
+};
