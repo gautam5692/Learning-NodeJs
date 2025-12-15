@@ -13,23 +13,23 @@ exports.homePage = (req, res, next) => {
 exports.favourites = (req, res, next) => {
   res.render("user/favourites", {
     pageTitle: "Favourites",
-    activeTab: "favourites"
-  })
-}
+    activeTab: "favourites",
+  });
+};
 
 exports.reserve = (req, res, next) => {
   res.render("user/reserve", {
     pageTitle: "Reserved Homes",
-    activeTab: "reserve"
-  })
-}
+    activeTab: "reserve",
+  });
+};
 
 exports.bookings = (req, res, next) => {
   res.render("user/bookings", {
     pageTitle: "Bookings",
-    activeTab: "bookings"
-  })
-}
+    activeTab: "bookings",
+  });
+};
 
 exports.homeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
@@ -41,4 +41,17 @@ exports.homeDetails = (req, res, next) => {
       activeTab: "Home Details",
     });
   });
+};
+
+exports.postAddFavourites = (req, res, next) => {
+  const { homeId } = req.body;
+  Home.addFavourites(homeId)
+  Home.fetchData((registeredHomes) => {
+    const favourites = registeredHomes.filter((home) => home.isFavourite == true)
+    res.render("user/favourites", {
+      pageTitle: "Favourites",
+      activeTab: "favourites",
+      home,
+    })
+    });
 };

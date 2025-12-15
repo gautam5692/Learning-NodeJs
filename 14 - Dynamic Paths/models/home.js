@@ -14,24 +14,43 @@ module.exports = class Home {
   }
 
   save() {
-    this.id = new Date().getTime()
+    this.id = new Date().getTime().toString();
+    this.isFavourite = false;
     Home.fetchData((registeredHomes) => {
       registeredHomes.push(this);
-      fs.writeFile(dataFilePath, JSON.stringify(registeredHomes), (err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
-    })
+      Home.writeIntoFile(dataFilePath, registeredHomes);
+    });
   }
-  
+
+  static writeIntoFile(dataFilePath, registeredHomes) {
+    fs.writeFile(dataFilePath, JSON.stringify(registeredHomes), (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
+
   static fetchData(callback) {
     fs.readFile(dataFilePath, (err, data) => {
       if (!err && data.toString() !== "") {
-        callback(JSON.parse(data))
+        callback(JSON.parse(data));
       } else {
-        callback([])
+        callback([]);
       }
+    });
+  }
+
+  static addFavourites(homeId) {
+    Home.fetchData((registeredHomes) => {
+      const homeIndex = registeredHomes.findIndex((home) => homeId == home.id);
+      registeredHomes[homeIndex].isFavourite = true;
+      Home.writeIntoFile(dataFilePath, registeredHomes);
+    });
+  }
+
+  fetchFavourites() {
+    Home.fetchData((registeredHomes) => {
+      const favourites = registeredHomes.filter()
     })
   }
 };
