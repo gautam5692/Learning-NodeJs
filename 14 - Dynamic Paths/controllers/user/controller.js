@@ -1,19 +1,19 @@
+const rootDir = require("../../utility/pathUtil");
+const path = require("path");
 const Home = require("../../models/home");
+const homeDataFile = path.join(rootDir, "data", "homeData.json");
+const favouritesDataFile = path.join(rootDir, "data", "favouritesData.json");
 
 exports.homePage = (req, res, next) => {
-  Home.fetchData((registeredHomes) => {
-    res.render("user/home_page", {
-      registeredHomes,
-      pageTitle: "Home - aribnb",
-      activeTab: "Home",
+  Home.fetchData(homeDataFile, (registeredHomes) => {
+    Home.fetchData(favouritesDataFile, (favourites) => {
+      res.render("user/home_page", {
+        registeredHomes,
+        pageTitle: "Home - aribnb",
+        activeTab: "Home",
+        favourites,
+      });
     });
-  });
-};
-
-exports.favourites = (req, res, next) => {
-  res.render("user/favourites", {
-    pageTitle: "Favourites",
-    activeTab: "favourites",
   });
 };
 
@@ -33,7 +33,7 @@ exports.bookings = (req, res, next) => {
 
 exports.homeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
-  Home.fetchData((registeredHomes) => {
+  Home.fetchData(homeDataFile, (registeredHomes) => {
     const home = registeredHomes.find((home) => homeId == home.id);
     res.render("user/home_details", {
       home,
@@ -43,15 +43,25 @@ exports.homeDetails = (req, res, next) => {
   });
 };
 
-exports.postAddFavourites = (req, res, next) => {
-  const { homeId } = req.body;
-  Home.addFavourites(homeId)
-  Home.fetchData((registeredHomes) => {
-    const favourites = registeredHomes.filter((home) => home.isFavourite == true)
+exports.postFavourites = (req, res, next) => {
+  const { homeId, action } = req.body;
+  if (action === "add") {
+    Home.addFavourites(homeId, () => {
+      res.redirect("/favourites");
+    });
+  } else if (action === "remove") {
+    Home.removeFavourites(homeId, () => {
+      res.redirect("/favourites")
+    })
+  }
+};
+
+exports.getFavourites = (req, res, next) => {
+  Home.fetchData(favouritesDataFile, (favourites) => {
     res.render("user/favourites", {
       pageTitle: "Favourites",
       activeTab: "favourites",
-      home,
-    })
+      favourites,
     });
+  });
 };
