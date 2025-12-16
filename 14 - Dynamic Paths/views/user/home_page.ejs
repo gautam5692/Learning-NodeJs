@@ -34,9 +34,9 @@
           </a>
           <div class="absolute top-3 right-3 cursor-pointer bg-gray-500 h-8 w-8 flex justify-center items-center rounded-3xl invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-300">
             <% if (favourites.some((favourite) => favourite.id === home.id)) { %>
-            <%- include("../partials/remove_fav", {home: home}) %>
+            <%- include("../partials/fav_btn//remove_icon", {home: home}) %>
             <% } else { %>
-            <%- include("../partials/add_fav", {home: home}) %>
+            <%- include("../partials/fav_btn/add_icon", {home: home}) %>
             <% } %>
           </div>
           <div class="flex justify-evenly items-center py-5">
