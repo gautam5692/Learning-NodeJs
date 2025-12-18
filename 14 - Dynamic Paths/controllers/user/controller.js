@@ -1,12 +1,14 @@
 const rootDir = require("../../utility/pathUtil");
 const path = require("path");
 const Home = require("../../models/home");
+const { registerHooks } = require("module");
+const Favourite = require("../../models/favourites");
 const homeDataFile = path.join(rootDir, "data", "homeData.json");
 const favouritesDataFile = path.join(rootDir, "data", "favouritesData.json");
 
 exports.homePage = (req, res, next) => {
-  Home.fetchData(homeDataFile, (registeredHomes) => {
-    Home.fetchData(favouritesDataFile, (favourites) => {
+  Home.fetchData((registeredHomes) => {
+    Favourite.fetchFavourites((favourites) => {
       res.render("user/home_page", {
         registeredHomes,
         pageTitle: "Home - aribnb",
@@ -33,7 +35,7 @@ exports.bookings = (req, res, next) => {
 
 exports.homeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
-  Home.fetchData(homeDataFile, (registeredHomes) => {
+  Home.fetchData((registeredHomes) => {
     const home = registeredHomes.find((home) => homeId == home.id);
     res.render("user/home_details", {
       home,
@@ -45,19 +47,21 @@ exports.homeDetails = (req, res, next) => {
 
 exports.postFavourites = (req, res, next) => {
   const { homeId, action } = req.body;
-  if (action === "add") {
-    Home.addFavourites(homeId, () => {
-      res.redirect("/favourites");
-    });
-  } else if (action === "remove") {
-    Home.removeFavourites(homeId, () => {
-      res.redirect("/favourites")
-    })
-  }
+  Home.fetchData((registeredHomes) => {
+    if (action === "add") {
+      Favourite.addFavourites(homeId, registeredHomes, () => {
+        res.redirect("/favourites");
+      });
+    } else if (action === "remove") {
+      Favourite.removeFavourites(homeId, () => {
+        res.redirect("/favourites");
+      });
+    }
+  });
 };
 
 exports.getFavourites = (req, res, next) => {
-  Home.fetchData(favouritesDataFile, (favourites) => {
+  Favourite.fetchFavourites((favourites) => {
     res.render("user/favourites", {
       pageTitle: "Favourites",
       activeTab: "favourites",

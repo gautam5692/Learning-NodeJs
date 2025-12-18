@@ -5,10 +5,10 @@
   <%- include("../partials/user_header") %>
   <main class="w-full flex flex-col justify-center items-center mt-10 p-4 sm:p-6 lg:p-8">
     <div class="fixed top-15 flex justify-center gap-5 items-center w-full px-2">
-      <%- include("../partials/fav_btn/add_btn") %>
-      <%- include("../partials/booking_btn/add_btn") %>
-      <%- include("../partials/reserve_btn/add_btn") %>
-    </div>
+          <%- include("../partials/fav_btn/add_btn") %>
+          <%- include("../partials/booking_btn/add_btn") %>
+          <%- include("../partials/reserve_btn/add_btn") %>
+        </div>
     <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
       <% if (home) { %>
       <h2 class="text-4xl font-extrabold text-gray-900 mb-8 pt-6 px-6 text-center border-b pb-4">
@@ -16,7 +16,7 @@
       </h2>
       <div class="p-6 md:p-8">
         <div class="mb-8">
-        <img src="<%= home.house_img_url %>" alt="Home Image">
+          <img src="<%= home.house_img_url %>" alt="Home Image">
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
           <div class="p-4 border border-gray-100 rounded-md bg-gray-50">
@@ -37,10 +37,11 @@
           <div class="p-4 border border-gray-100 rounded-md bg-gray-50">
             <p class="font-semibold text-gray-500">House Rating:</p>
             <p class="text-xl font-bold text-yellow-500">
-                ⭐ <%= home.rating %>
+              ⭐ <%= home.rating %>
             </p>
           </div>
         </div>
+        
       </div>
       <% } else { %>
       <div class="p-10 text-center">

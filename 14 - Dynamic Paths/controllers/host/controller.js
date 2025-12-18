@@ -4,7 +4,7 @@ const Home = require("../../models/home");
 const homeDataFile = path.join(rootDir, "data", "homeData.json")
 
 exports.homePage = (req, res, next) => {
-  Home.fetchData(homeDataFile, (registeredHomes) => {
+  Home.fetchData((registeredHomes) => {
     res.render("host/home_page", {
       registeredHomes,
       pageTitle: "Host Home - airbnb",
@@ -32,7 +32,7 @@ exports.postAddHome = (req, res, next) => {
 
 exports.homeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
-  Home.fetchData(homeDataFile, (registeredHomes) => {
+  Home.fetchData((registeredHomes) => {
     const home = registeredHomes.find((home) => homeId == home.id);
     res.render("host/home_details", {
       home,

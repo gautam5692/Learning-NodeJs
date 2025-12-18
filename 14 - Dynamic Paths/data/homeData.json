@@ -1,1 +1,38 @@
-[{"house_name":"Gautam Nivas","house_img_url":"/images/house1.png","price":"4500","location":"Kotmi","rating":"4.9","id":"1765850585731","isFavourite":false},{"house_name":"Anju Nivas","house_img_url":"/images/house2.png","price":"4200","location":"Korba","rating":"4.5","id":"1765850766777","isFavourite":false},{"house_name":"Shanta Manoj Nivas","house_img_url":"/images/house4.png","price":"5400","location":"Singapore","rating":"5","id":"1765892958781","isFavourite":false}]
+[
+  {
+    "house_name": "Gautam Nivas",
+    "house_img_url": "/images/house1.png",
+    "price": "4500",
+    "location": "Kotmi",
+    "rating": "4.9",
+    "id": "1765850585731",
+    "isFavourite": false
+  },
+  {
+    "house_name": "Anju Nivas",
+    "house_img_url": "/images/house2.png",
+    "price": "4200",
+    "location": "Korba",
+    "rating": "4.5",
+    "id": "1765850766777",
+    "isFavourite": false
+  },
+  {
+    "house_name": "Shanta Manoj Nivas",
+    "house_img_url": "/images/house4.png",
+    "price": "5400",
+    "location": "Singapore",
+    "rating": "5",
+    "id": "1765892958781",
+    "isFavourite": false
+  },
+  {
+    "house_name": "Family House",
+    "house_img_url": "/images/house3.png",
+    "price": "0",
+    "location": "Kotmi",
+    "rating": "5",
+    "id": "1765979567414",
+    "isFavourite": false
+  }
+]

@@ -11,13 +11,13 @@
       </h2>
       <ul class="flex justify-center items-center flex-wrap gap-2">
         <% favourites.forEach((home) => { %>
-        <li class="bg-white overflow-hidden rounded shadow-md max-w-64 group relative">
+        <li class="bg-white overflow-hidden rounded shadow-md w-60 group relative">
           <a href="/home-details/<%=home.id%>" title="Click to see details">
             <div class="h-44 overflow-hidden">
               <img src="<%= home.house_img_url %>" alt="home_img" class="w-full h-full">
             </div>
-            <div class="flex flex-col px-4">
-              <div class="text-sm font-medium">
+            <div class="flex flex-col px-4 overflow-hidden">
+              <div class="text-sm font-medium overflow-hidden whitespace-nowrap truncate" title="<%= home.house_name %> in <%= home.location %>">
                 <%= home.house_name %> in <%= home.location %>
               </div>
               <div class="text-xs text-gray-500 flex items-baseline gap-1">
