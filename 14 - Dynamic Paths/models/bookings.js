@@ -2,37 +2,35 @@ const fs = require("fs");
 const path = require("path");
 const rootDir = require("../utility/pathUtil");
 const Home = require("./home");
-const { register } = require("module");
-const favouritesDataFile = path.join(rootDir, "data", "favouritesData.json");
+const bookingsDataFile = path.join(rootDir, "data", "bookingsData.json");
 
-module.exports = class Favourite {
-  static addFavourites(homeId, callback) {
+module.exports = class Booking {
+  static addBookings(homeId, callback) {
     Home.fetchData((registeredHomes) => {
       const homeIndex = registeredHomes.findIndex((home) => home.id === homeId);
-      registeredHomes[homeIndex].isFavourite = true;
+      registeredHomes[homeIndex].isBooked = true;
       Home.writeIntoFile(registeredHomes, callback);
     });
   }
 
-  static removeFavourites(homeId, callback) {
+  static removeBookings(homeId, callback) {
     Home.fetchData((registeredHomes) => {
       const homeIndex = registeredHomes.findIndex((home) => home.id === homeId);
-      registeredHomes[homeIndex].isFavourite = false;
-      Home.writeIntoFile(registeredHomes,callback);
+      registeredHomes[homeIndex].isBooked = false;
+      Home.writeIntoFile(registeredHomes, callback);
     });
   }
 
-  static fetchFavourites(callback) {
+  static fetchBookings(callback) {
     Home.fetchData((registeredHomes) => {
-      const favourites = registeredHomes.filter(
-        (home) => home.isFavourite === true
-      );
-      callback(!favourites ? [] : favourites)
+      const bookings = registeredHomes.filter((home) => home.isBooked === true);
+      console.log(bookings);
+      callback(!bookings ? [] : bookings);
     });
   }
 
   static writeIntoFile(data, callback) {
-    fs.writeFile(favouritesDataFile, JSON.stringify(data), (err) => {
+    fs.writeFile(bookingsDataFile, JSON.stringify(data), (err) => {
       if (err) {
         console.log(err);
       }

@@ -22,10 +22,13 @@ module.exports = class Home {
     });
   }
 
-  static writeIntoFile(registeredHomes) {
+  static writeIntoFile(registeredHomes, callback) {
     fs.writeFile(homeDataFile, JSON.stringify(registeredHomes), (err) => {
       if (err) {
         console.log(err);
+      }
+      if (callback) {
+        callback()
       }
     });
   }

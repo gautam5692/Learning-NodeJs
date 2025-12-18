@@ -1,8 +1,8 @@
 const rootDir = require("../../utility/pathUtil");
 const path = require("path");
 const Home = require("../../models/home");
-const { registerHooks } = require("module");
 const Favourite = require("../../models/favourites");
+const Booking = require("../../models/bookings");
 const homeDataFile = path.join(rootDir, "data", "homeData.json");
 const favouritesDataFile = path.join(rootDir, "data", "favouritesData.json");
 
@@ -13,23 +13,8 @@ exports.homePage = (req, res, next) => {
         registeredHomes,
         pageTitle: "Home - aribnb",
         activeTab: "Home",
-        favourites,
       });
     });
-  });
-};
-
-exports.reserve = (req, res, next) => {
-  res.render("user/reserve", {
-    pageTitle: "Reserved Homes",
-    activeTab: "reserve",
-  });
-};
-
-exports.bookings = (req, res, next) => {
-  res.render("user/bookings", {
-    pageTitle: "Bookings",
-    activeTab: "bookings",
   });
 };
 
@@ -47,9 +32,8 @@ exports.homeDetails = (req, res, next) => {
 
 exports.postFavourites = (req, res, next) => {
   const { homeId, action } = req.body;
-  Home.fetchData((registeredHomes) => {
     if (action === "add") {
-      Favourite.addFavourites(homeId, registeredHomes, () => {
+      Favourite.addFavourites(homeId, () => {
         res.redirect("/favourites");
       });
     } else if (action === "remove") {
@@ -57,7 +41,6 @@ exports.postFavourites = (req, res, next) => {
         res.redirect("/favourites");
       });
     }
-  });
 };
 
 exports.getFavourites = (req, res, next) => {
@@ -66,6 +49,29 @@ exports.getFavourites = (req, res, next) => {
       pageTitle: "Favourites",
       activeTab: "favourites",
       favourites,
+    });
+  });
+};
+
+exports.postBookings = (req, res, next) => {
+  const { homeId, action } = req.body;
+    if (action === "add") {
+      Booking.addBookings(homeId, () => {
+        res.redirect("/bookings");
+      });
+    } else if (action === "remove") {
+      Booking.removeBookings(homeId, () => {
+        res.redirect("/bookings");
+      });
+    }
+};
+
+exports.getBookings = (req, res, next) => {
+  Booking.fetchBookings((bookings) => {
+    res.render("user/bookings", {
+      pageTitle: "Bookings",
+      activeTab: "bookings",
+      bookings,
     });
   });
 };
