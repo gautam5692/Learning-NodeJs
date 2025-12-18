@@ -16,6 +16,7 @@ module.exports = class Home {
   save() {
     this.id = new Date().getTime().toString();
     this.isFavourite = false;
+    this.isBooked = false;
     Home.fetchData((registeredHomes) => {
       registeredHomes.push(this);
       Home.writeIntoFile(registeredHomes);

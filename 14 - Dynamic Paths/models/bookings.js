@@ -24,19 +24,7 @@ module.exports = class Booking {
   static fetchBookings(callback) {
     Home.fetchData((registeredHomes) => {
       const bookings = registeredHomes.filter((home) => home.isBooked === true);
-      console.log(bookings);
       callback(!bookings ? [] : bookings);
-    });
-  }
-
-  static writeIntoFile(data, callback) {
-    fs.writeFile(bookingsDataFile, JSON.stringify(data), (err) => {
-      if (err) {
-        console.log(err);
-      }
-      if (callback) {
-        callback();
-      }
     });
   }
 };

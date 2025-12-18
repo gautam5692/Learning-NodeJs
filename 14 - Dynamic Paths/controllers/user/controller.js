@@ -21,7 +21,7 @@ exports.homePage = (req, res, next) => {
 exports.homeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
   Home.fetchData((registeredHomes) => {
-    const home = registeredHomes.find((home) => homeId == home.id);
+    const home = registeredHomes.find((home) => homeId === home.id);
     res.render("user/home_details", {
       home,
       pageTitle: "Home Details",

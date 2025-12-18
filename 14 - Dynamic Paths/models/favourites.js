@@ -30,15 +30,4 @@ module.exports = class Favourite {
       callback(!favourites ? [] : favourites)
     });
   }
-
-  static writeIntoFile(data, callback) {
-    fs.writeFile(favouritesDataFile, JSON.stringify(data), (err) => {
-      if (err) {
-        console.log(err);
-      }
-      if (callback) {
-        callback();
-      }
-    });
-  }
 };

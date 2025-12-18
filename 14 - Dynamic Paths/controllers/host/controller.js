@@ -1,7 +1,9 @@
 const rootDir = require("../../utility/pathUtil");
 const path = require("path");
 const Home = require("../../models/home");
-const homeDataFile = path.join(rootDir, "data", "homeData.json")
+const EditHome = require("../../models/edit_home");
+const DeleteHome = require("../../models/delete_home");
+const homeDataFile = path.join(rootDir, "data", "homeData.json");
 
 exports.homePage = (req, res, next) => {
   Home.fetchData((registeredHomes) => {
@@ -33,11 +35,36 @@ exports.postAddHome = (req, res, next) => {
 exports.homeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
   Home.fetchData((registeredHomes) => {
-    const home = registeredHomes.find((home) => homeId == home.id);
+    const home = registeredHomes.find((home) => homeId === home.id);
     res.render("host/home_details", {
       home,
       pageTitle: "Home Details",
       activeTab: "Home Details",
     });
   });
+};
+
+exports.editHome = (req, res, next) => {
+  const homeId = req.params.homeId;
+  Home.fetchData((registeredHomes) => {
+    const home = registeredHomes.find((home) => homeId === home.id);
+    res.render("host/edit_home", {
+      pageTitle: "Edit Home",
+      activeTab: "Edit Home",
+      home,
+    });
+  });
+};
+
+exports.postHostHome = (req, res, next) => {
+  if (req.body.action === "delete") {
+    DeleteHome.delete(req.body.homeId, () => {
+      console.log(req.body.homeId)
+      res.redirect("host");
+    });
+  } else {
+    EditHome.save(req.body.id, req.body, () => {
+      res.redirect("host");
+    });
+  }
 };
