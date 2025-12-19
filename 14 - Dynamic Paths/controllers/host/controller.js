@@ -59,7 +59,6 @@ exports.editHome = (req, res, next) => {
 exports.postHostHome = (req, res, next) => {
   if (req.body.action === "delete") {
     DeleteHome.delete(req.body.homeId, () => {
-      console.log(req.body.homeId)
       res.redirect("host");
     });
   } else {
